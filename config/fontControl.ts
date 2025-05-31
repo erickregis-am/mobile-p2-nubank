@@ -1,0 +1,16 @@
+export const FONT = {
+    GRAPHIK_BLACK: 'Graphik-Black-trial',
+    GRAPHIK_BLACKITALIC: 'Graphik-BlackItalic-trial',
+    GRAPHIK_BOLD: 'Graphik-Bold-trial',
+    GRAPHIK_BOLDITALIC: 'Graphik-BoldItalic-trial',
+    GRAPHIK_EXTRALIGHT: 'Graphik-Extralight-trial',
+    GRAPHIK_EXTRALIGHTITALIC: 'Graphik-ExtralightItalic-trial',
+    GRAPHIK_LIGHT: 'Graphik-Light-trial',
+    GRAPHIK_LIGHTITALIC: 'Graphik-LightItalic-trial',
+    GRAPHIK_MEDIUM: 'Graphik-Medium-trial',
+    GRAPHIK_MEDIUMITALIC: 'Graphik-MediumItalic-trial',
+    GRAPHIK_REGULAR: 'Graphik-Regular-trial',
+    GRAPHIK_REGULARITALIC: 'Graphik-RegularItalic-trial',
+    GRAPHIK_SEMIBOLD: 'Graphik-Semibold-trial',
+    GRAPHIK_SEMIBOLDITALIC: 'Graphik-SemiboldItalic-trial',
+};
