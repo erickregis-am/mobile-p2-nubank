@@ -6,7 +6,7 @@ const { width, height } = Dimensions.get("window");
 export default function NotFound(){
     return(
         <View style={styles.container}>
-            <Link replace href="/Home" asChild>
+            <Link replace href="(tabs)/index" asChild>
                 <Button title="Ir para o Menu" />
             </Link>
         </View>
