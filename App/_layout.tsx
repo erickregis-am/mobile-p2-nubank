@@ -2,7 +2,7 @@ import { Stack } from "expo-router";
 import { Dimensions } from "react-native";
 
 const { width, height } = Dimensions.get("window");
-
+import "../global.css"
 export default function RootLayout(){
     return (
         <Stack>

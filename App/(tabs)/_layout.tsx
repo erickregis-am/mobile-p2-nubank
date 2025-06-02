@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet, Image, Pressable} from 'react-native';
 import { Tabs } from "expo-router";
 import { Dimensions } from "react-native";
-
+import "../../global.css"
 const { width, height } = Dimensions.get("window");
 
 export default function TabLayout(){
