@@ -6,6 +6,9 @@ const { width, height } = Dimensions.get("window");
 export default function Ferramentas(){
     return (
 
+
+
+        
         <View style={styles.view} className="flex flex-col gap-4">
             <View style={styles.container} className="flex flex-col gap-4">
                 <Text style={styles.container_title} className="font-bold">Acompanhe seu dinheiro</Text>

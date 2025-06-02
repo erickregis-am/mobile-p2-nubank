@@ -1,6 +1,6 @@
 import { View, Text, Pressable, StyleSheet} from "react-native";
 import { ScrollView } from "react-native";
-import CardsLoja from "@/components/CardsLoja";
+import CardsLoja from "@/components/CardsDestaque";
 import { Dimensions } from "react-native";
 
 const { width, height } = Dimensions.get("window");
