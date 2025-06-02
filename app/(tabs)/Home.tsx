@@ -2,7 +2,7 @@ import HomeActionButton from "@/components/HomeActionButton";
 import { useLocalSearchParams } from "expo-router";
 import { ChevronRight } from "lucide-react-native";
 import { useState } from "react";
-import { View, Text, Pressable, StyleSheet, StatusBar, Image, ScrollView, TouchableOpacity} from "react-native";
+import { View, Text,  StyleSheet, StatusBar, Image, ScrollView, TouchableOpacity} from "react-native";
 import { Dimensions } from "react-native";
 
 const { width, height } = Dimensions.get("window");
