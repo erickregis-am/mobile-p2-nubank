@@ -1,42 +1,40 @@
-import CardFerramentas from "@/components/Ferramenta";
-import { View, Text, Image, StyleSheet} from "react-native";
+import CardFerramentasSEM from "@/components/Ferramenta";
+import { View, Text, Image, StyleSheet } from "react-native";
 import { Dimensions } from "react-native";
 
-const { width, height } = Dimensions.get("window");
-export default function Ferramentas(){
-    return (
+const { width: widthSEM, height: heightSEM } = Dimensions.get("window");
 
-
-
-        
-        <View style={styles.view} className="flex flex-col gap-4">
-            <View style={styles.container} className="flex flex-col gap-4">
-                <Text style={styles.container_title} className="font-bold">Acompanhe seu dinheiro</Text>
-                <CardFerramentas image={require('@/assets/carotes.png')} name={"Caixinhas"} value={"R$100,00"}/>
-                <CardFerramentas image={require('@/assets/carotes.png')} name={"Investimentos"} value={"R$100,00"}/>
-                <CardFerramentas image={require('@/assets/carotes.png')} name={"Cripto"} value={"R$100,00"}/>
+export default function FerramentasSEM() {
+    return (        
+        <View style={stylesSEM.viewSEM} className="flex flex-col gap-4">
+            <View style={stylesSEM.containerSEM} className="flex flex-col gap-4">
+                <Text style={stylesSEM.container_titleSEM} className="font-bold">Acompanhe seu dinheiro</Text>
+                <CardFerramentasSEM imageSEM={require('@/assets/porco.png')} nameSEM={"Caixinhas"} valueSEM={"R$100,00"}/>
+                <CardFerramentasSEM imageSEM={require('@/assets/barra.png')} nameSEM={"Investimentos"} valueSEM={"R$100,00"}/>
+                <CardFerramentasSEM imageSEM={require('@/assets/cripto.png')} nameSEM={"Cripto"} valueSEM={"R$100,00"}/>
             </View>
-            <View className="w-full h-1 bg-gray-200"></View>
-            <View style={styles.container} className="flex flex-col gap-4">
-                <Text style={styles.container_title} className="font-bold">Seguros</Text>
-                <CardFerramentas image={require('@/assets/carotes.png')} name={"Seguro de vida"} value={""}/>
-                <CardFerramentas image={require('@/assets/carotes.png')} name={"Seguro de celular"} value={""}/>
+            <View className="w-full h-[3px] bg-gray-200"></View>
+            <View style={stylesSEM.containerSEM} className="flex flex-col gap-4">
+                <Text style={stylesSEM.container_titleSEM} className="font-bold">Seguros</Text>
+                <CardFerramentasSEM imageSEM={require('@/assets/coracao.png')} nameSEM={"Seguro de vida"} valueSEM={""}/>
+                <CardFerramentasSEM imageSEM={require('@/assets/celular.png')} nameSEM={"Seguro de celular"} valueSEM={""}/>
             </View>
             <View></View>
         </View>
     );
 }
 
-const styles = StyleSheet.create({
-    view:{
-        marginTop: height * 0.035,
+const stylesSEM = StyleSheet.create({
+    viewSEM: {
+        paddingTop: heightSEM * 0.035,
+        backgroundColor: 'white',
+        height: '100%'
     },
-    container:{
-        paddingHorizontal: width * 0.075,
+    containerSEM: {
+        paddingHorizontal: widthSEM * 0.075,
     },
-    container_title:{
-        marginBottom: height * 0.01,
+    container_titleSEM: {
+        marginBottom: heightSEM * 0.01,
         fontSize: 18
     }
 });
-

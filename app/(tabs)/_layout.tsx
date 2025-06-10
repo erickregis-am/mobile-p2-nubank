@@ -1,94 +1,117 @@
-import { View, Text, StyleSheet, Image, Pressable} from 'react-native';
-import { Tabs } from "expo-router";
+import { View, Text, StyleSheet, Image, Pressable } from 'react-native';
+import { Tabs, useRouter as useRouterSEM } from "expo-router";
 import { Dimensions } from "react-native";
 import "../../global.css"
-import { useState } from 'react';
-const { width, height } = Dimensions.get("window");
+import { useState as useStateSEM } from 'react';
+import { useEyeSEM } from '@/context/EyeContext';
 
-export default function TabLayout(){
-    const [olhoAberto, setOlhoAberto] = useState(false);
-    const toggleOlho = () => {
-        setOlhoAberto(!olhoAberto);
-    };
+const { width: widthSEM, height: heightSEM } = Dimensions.get("window");
+
+export default function TabLayoutSEM() {
+    const { toggleOlhoSEM, olhoAbertoSEM } = useEyeSEM()
+    const routerSEM = useRouterSEM()
 
     return (
         <Tabs screenOptions={{
+            tabBarActiveTintColor: "#9d0dfd",
             headerStyle: {
                 backgroundColor: '#810AD0',
-                height: height * 0.125,
+                height: heightSEM * 0.125,
+                elevation: 0
             },
 
             headerLeft: () => 
-            <View style={styles.headerLeft} >
-                <Image style={{width: 24, height: 24}} 
-                source={require("../../assets/icons/user.png")}></Image>
-            </View>,
+                <View style={stylesSEM.headerLeftSEM}>
+                    <Image style={{ width: 24, height: 24 }} 
+                    source={require("../../assets/icons/user.png")} />
+                </View>,
 
             headerRight: () => 
-            <View style={styles.headerRight} >
-                <Pressable onPress={toggleOlho} android_ripple={{color: "b545ff", radius: 30}} style={styles.containerVerSaldo}>
-                    <Image style={{width: 24, height: 24}} 
-                    source={require("../../assets/icons/view.png")}></Image>
-                </Pressable>
+                <View style={stylesSEM.headerRightSEM}>
+                    <Pressable onPress={toggleOlhoSEM} android_ripple={{ color: "b545ff", radius: 30 }} style={stylesSEM.containerVerSaldoSEM}>
+                        <Image style={{ width: 24, height: 24, resizeMode: 'contain' }} 
+                        source={!olhoAbertoSEM ? require("../../assets/icons/close_eye.png") : require("../../assets/icons/view.png")} />
+                    </Pressable>
 
-                <Pressable android_ripple={{color: "b545ff", radius: 30}} style={styles.containerMeAjuda}>
-                    <Image style={{width: 24, height: 24}} 
-                    source={require("../../assets/icons/questao.png")}></Image>
-                </Pressable>
+                    <Pressable onPress={() => routerSEM.push('/ajuda')} android_ripple={{ color: "b545ff", radius: 30 }} style={stylesSEM.containerMeAjudaSEM}>
+                        <Image style={{ width: 24, height: 24 }} 
+                        source={require("../../assets/icons/questao.png")} />
+                    </Pressable>
 
-                <Pressable android_ripple={{color: "b545ff", radius: 30}} style={styles.containerEmail}>
-                    <Image style={{width: 24, height: 24}} 
-                    source={require("../../assets/icons/mail.png")}></Image>
-                </Pressable>
-            </View>
+                    <Pressable android_ripple={{ color: "b545ff", radius: 30 }} style={stylesSEM.containerEmailSEM}>
+                        <Image style={{ width: 24, height: 24 }} 
+                        source={require("../../assets/icons/mail.png")} />
+                    </Pressable>
+                </View>
         }}>
+            <Tabs.Screen name="index" options={{
+                title: "",
+                tabBarIcon: ({ color }) => (
+                    <Image source={require('@/assets/index.png')} style={[stylesSEM.iconSEM, { tintColor: color }]} />
+                ),
+            }} />
 
-            <Tabs.Screen initialParams={{ olhoAberto }} name="Home" options={{title: ""}}></Tabs.Screen>
-            <Tabs.Screen name="Ferramentas" options={{title: ""}}></Tabs.Screen>
-            <Tabs.Screen name="Lojas" options={{title: ""}}></Tabs.Screen>
+            <Tabs.Screen name="ferramentas" options={{
+                title: "",
+                tabBarIcon: ({ color }) => (
+                    <Image source={require('@/assets/moeda.png')} style={[stylesSEM.iconSEM, { tintColor: color }]} />
+                ),
+            }} />
 
+            <Tabs.Screen name="lojas" options={{
+                title: "",
+                tabBarIcon: ({ color }) => (
+                    <Image source={require('@/assets/loja.png')} style={[stylesSEM.iconSEM, { tintColor: color }]} />
+                ),
+            }} />
         </Tabs>
     );
 }
 
-const styles = StyleSheet.create({
-     headerLeft: {
-        marginLeft: width * 0.075,
+const stylesSEM = StyleSheet.create({
+    headerLeftSEM: {
+        marginLeft: widthSEM * 0.075,
         backgroundColor: "#9d0dfd",
         height: 50,
         width: 50,
         borderRadius: 25,
         justifyContent: "center",
         alignItems: "center",
-     },
+    },
 
-     headerRight: {
+    headerRightSEM: {
         flexDirection: "row",
-        marginRight: width * 0.025,
+        marginRight: widthSEM * 0.025,
         padding: 5,
         justifyContent: "center",
         alignItems: "center",
         gap: 5,
-     },
+    },
 
-     containerVerSaldo: {
+    containerVerSaldoSEM: {
         justifyContent: "center",
         alignItems: "center",
         height: 40,
         width: 50,
-     },
+    },
 
-     containerMeAjuda: {
+    containerMeAjudaSEM: {
         justifyContent: "center",
         alignItems: "center",
         height: 40,
         width: 50,
-     },
+    },
 
-     containerEmail: {
+    containerEmailSEM: {
         justifyContent: "center",
         alignItems: "center",
         height: 40,
         width: 50,
-     }
+    },
+
+    iconSEM: {
+        width: 24,
+        height: 24,
+        resizeMode: 'contain',
+    },
 });

@@ -1,22 +1,22 @@
-import { View, StyleSheet, Text, Dimensions, Button } from "react-native";
-import { Link } from "expo-router"; 
+import { View as ViewSEM, StyleSheet as StyleSheetSEM, Text as TextSEM, Dimensions as DimensionsSEM, Button as ButtonSEM } from "react-native";
+import { Link as LinkSEM } from "expo-router"; 
 
-const { width, height } = Dimensions.get("window");
+const { width: widthSEM, height: heightSEM } = DimensionsSEM.get("window");
 
-export default function NotFound(){
-    return(
-        <View style={styles.container}>
-            <Link replace href="(tabs)/index" asChild>
-                <Button title="Ir para o Menu" />
-            </Link>
-        </View>
+export default function NotFoundSEM() {
+    return (
+        <ViewSEM style={stylesSEM.containerSEM}>
+            <LinkSEM replace href="(tabs)/index" asChild>
+                <ButtonSEM title="Ir para o Menu" />
+            </LinkSEM>
+        </ViewSEM>
     );
 }
 
-const styles = StyleSheet.create({
-    container: {
-        width: width,
-        height: height,
+const stylesSEM = StyleSheetSEM.create({
+    containerSEM: {
+        width: widthSEM,
+        height: heightSEM,
         justifyContent: "center",
         alignItems: "center",
         backgroundColor: "#000000",

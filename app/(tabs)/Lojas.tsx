@@ -1,50 +1,89 @@
-import { View, Text, Pressable, StyleSheet} from "react-native";
-import { ScrollView } from "react-native";
-import CardsLoja from "@/components/CardsDestaque";
-import { Dimensions } from "react-native";
+import { View as ViewSEM, Text as TextSEM, Pressable as PressableSEM, StyleSheet as StyleSheetSEM } from "react-native";
+import { ScrollView as ScrollViewSEM } from "react-native";
+import { Dimensions as DimensionsSEM } from "react-native";
+import CardsDestaqueSEM from "@/components/CardsDestaque";
+import CardsLojaSEM from "@/components/CardsLoja";
 
-const { width, height } = Dimensions.get("window");
+const { width: widthSEM, height: heightSEM } = DimensionsSEM.get("window");
 
-export default function Lojas(){
+export default function LojasSEM() {
     return (
-        <View>
-            <View style={styles.container_Destacados}>
-                <Text style={{fontWeight:600, color: 'black', fontSize: 20}}>Destaques</Text>
-            </View>
+        <ScrollViewSEM showsVerticalScrollIndicator={false}>
+            <ViewSEM style={stylesSEM.container_DestacadosSEM}>
+                <TextSEM style={{ fontWeight: 600, color: 'black', fontSize: 20 }}>Destaques</TextSEM>
+            </ViewSEM>
 
-            <ScrollView horizontal overScrollMode="never" showsHorizontalScrollIndicator={false} style={styles.ContainerCards}>
-                {[1, 2, 3].map((_, index) => (
-                    <CardsLoja
-                    key={index}
-                    backgroundImage={require("../../assets/elden-ring.png")}
-                    iconImage={require("../../assets/playstation.png")}
-                    colorBottom="#014198"
-                    title="Jogo do momento"
-                    description="Nightreign saiu no playstation 5 nessa sexta-feira."
-                    descontOffer="15% OFF"
-                    style={{ marginRight: index === 2 ? 0 : 10 }}  
+            <ScrollViewSEM
+                horizontal
+                overScrollMode="never"
+                showsHorizontalScrollIndicator={false}
+                style={stylesSEM.ContainerCardsSEM}
+            >
+                {[1, 2, 3].map((_, indexSEM) => (
+                    <CardsDestaqueSEM
+                        key={indexSEM}
+                        backgroundImageSEM={require("../../assets/elden-ring.png")}
+                        iconImageSEM={require("../../assets/playstation.png")}
+                        colorBottomSEM="#014198"
+                        titleSEM="Jogo do momento"
+                        descriptionSEM="Nightreign saiu no playstation 5 nessa sexta-feira."
+                        descontOfferSEM="15% OFF"
+                        styleSEM={{ marginRight: indexSEM === 2 ? 0 : 10 }}
                     />
                 ))}
-                {/* Isso é para compensar o padding inicial do scroll, permitindo assim descolar o último card */}
-                <View style={{paddingHorizontal: width * 0.06}}></View>
-            </ScrollView>
-        </View>
+                <ViewSEM style={{ paddingHorizontal: widthSEM * 0.06 }}></ViewSEM>
+            </ScrollViewSEM>
+
+            <ViewSEM style={stylesSEM.Container_TemdeTudoSEM}>
+                <TextSEM style={{ fontWeight: 600, color: 'black', fontSize: 20 }}>Tem de Tudo</TextSEM>
+            </ViewSEM>
+
+            <ViewSEM style={stylesSEM.ContainerLojasSEM}>
+                {[1, 2, 3].map((_, indexSEM) => (                    
+                    <CardsLojaSEM
+                        key={indexSEM}
+                        iconImageSEM={require("../../assets/bemol.png")}
+                        titleSEM="Bemol"
+                        descriptionSEM='Produtos de alta qualidade para o consumidor.'
+                        descontOfferSEM="R$5"
+                    />
+                ))}
+            </ViewSEM>
+        </ScrollViewSEM>
     );
 }
 
-const styles = StyleSheet.create({
-    container_Destacados: {
+const stylesSEM = StyleSheetSEM.create({
+    container_DestacadosSEM: {
         width: "100%",
         height: "auto",
         justifyContent: "center",
-        paddingHorizontal: width * 0.06,
-        paddingVertical: height * 0.025,
+        paddingHorizontal: widthSEM * 0.06,
+        paddingVertical: heightSEM * 0.025,
+        paddingBottom: heightSEM * 0.035
     },
 
-    ContainerCards: {
+    ContainerCardsSEM: {
         display: "flex",
         flexDirection: "row",
         width: "100%",
-        paddingHorizontal: width*0.06,
+        paddingHorizontal: widthSEM * 0.06,
+        paddingBottom: heightSEM * 0.02
+    },
+
+    Container_TemdeTudoSEM: {
+        width: "100%",
+        height: "auto",
+        justifyContent: "center",
+        paddingHorizontal: widthSEM * 0.06,
+        paddingTop: heightSEM * 0.02,
+    },
+
+    ContainerLojasSEM: {
+        width: '100%',
+        height: 'auto',
+        paddingHorizontal: widthSEM * 0.06,
+        paddingVertical: heightSEM * 0.025,
+        gap: 5
     }
 });

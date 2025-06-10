@@ -1,61 +1,73 @@
 import { View, Text, StyleSheet , ImageSourcePropType, Image } from 'react-native';
 import { Dimensions } from 'react-native';
  
-const { width, height } = Dimensions.get('window');
+const { width: widthSEM, height: heightSEM } = Dimensions.get('window');
 
-interface CardType {
-    backgroundImage: ImageSourcePropType;
-    iconImage: ImageSourcePropType;
-    title?: string;
-    description?: string;
-    descontOffer?: string;
-    colorBottom?: string;
-    style?: any;
+interface CardTypeSEM {
+    backgroundImageSEM: ImageSourcePropType;
+    iconImageSEM: ImageSourcePropType;
+    titleSEM?: string;
+    descriptionSEM?: string;
+    descontOfferSEM?: string;
+    colorBottomSEM?: string;
+    styleSEM?: any;
 }
 
-export default function CardsDestaque({iconImage, backgroundImage, title, description, descontOffer, colorBottom, style}: CardType){
+export default function CardsDestaqueSEM({
+    iconImageSEM, 
+    backgroundImageSEM, 
+    titleSEM, 
+    descriptionSEM, 
+    descontOfferSEM, 
+    colorBottomSEM, 
+    styleSEM
+}: CardTypeSEM) {
     return (
-        <View style={[styles.ContainerCard, style]}>
-            <Image style={{width: "100%", height: "60%", borderTopRightRadius: 10, borderTopLeftRadius: 10, zIndex: 0}} source={backgroundImage} resizeMode='cover'/> 
+        <View style={[stylesSEM.ContainerCardSEM, styleSEM]}>
+            <Image style={{width: "100%", height: "60%", borderTopRightRadius: 10, borderTopLeftRadius: 10, zIndex: 0}} 
+                   source={backgroundImageSEM} 
+                   resizeMode='cover'/> 
             
-            <View style={{width: "100%", height: "40%", backgroundColor: colorBottom, borderBottomLeftRadius: 10, borderBottomRightRadius: 10, gap: height*0.02, zIndex: 0}}>
-                <View style={styles.ContainerIconandOffer}>
-                    <Image style={{height: 50, width: 50, borderRadius: 10}} resizeMode="contain" source={iconImage}/>
-                    <View style={{backgroundColor: 'white', width: width*0.25, height: height*0.04, borderRadius: 20, justifyContent: "center", alignItems: "center"}}>
-                        <Text className={'font-bold'} style={{color: '#810AD0'}}>{descontOffer}</Text>
+            <View style={{width: "100%", height: "40%", backgroundColor: colorBottomSEM, borderBottomLeftRadius: 10, borderBottomRightRadius: 10, gap: heightSEM*0.02, zIndex: 0}}>
+                <View style={stylesSEM.ContainerIconandOfferSEM}>
+                    <Image style={{height: 50, width: 50, borderRadius: 10}} 
+                           resizeMode="contain" 
+                           source={iconImageSEM}/>
+                    <View style={{backgroundColor: 'white', width: widthSEM*0.25, height: heightSEM*0.04, borderRadius: 20, justifyContent: "center", alignItems: "center"}}>
+                        <Text className={'font-bold'} style={{color: '#810AD0'}}>{descontOfferSEM}</Text>
                     </View>
                 </View>
 
-                <View style={styles.ContainerTexts}>
-                    <Text className={'text-slate-400 font-md text-xl text-left'}>{title}</Text>
-                    <Text className={'text-white font-bold text-xl text-left'}>{description}</Text>
+                <View style={stylesSEM.ContainerTextsSEM}>
+                    <Text className={'text-slate-400 font-md text-xl text-left'}>{titleSEM}</Text>
+                    <Text className={'text-white font-bold text-xl text-left'}>{descriptionSEM}</Text>
                 </View>
             </View>
         </View>
     );
 }
 
-const styles = StyleSheet.create({
-    ContainerCard: {
-        height: height * 0.4,
-        width: width * 0.75,
+const stylesSEM = StyleSheet.create({
+    ContainerCardSEM: {
+        height: heightSEM * 0.4,
+        width: widthSEM * 0.75,
     },
 
-    ContainerTexts: {
+    ContainerTextsSEM: {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: "flex-start",
-        width: width * 0.7,
-        gap: height * 0.01,
-        paddingHorizontal: width * 0.04
+        width: widthSEM * 0.7,
+        gap: heightSEM * 0.01,
+        paddingHorizontal: widthSEM * 0.04
     },
 
-    ContainerIconandOffer: {
+    ContainerIconandOfferSEM: {
         flexDirection: 'row',
         justifyContent: "space-between",
         alignItems: "center",
-        paddingHorizontal: width * 0.05,
+        paddingHorizontal: widthSEM * 0.05,
         zIndex: 1,
-        marginTop: -(height * 0.03),
+        marginTop: -(heightSEM * 0.03),
     }
 });

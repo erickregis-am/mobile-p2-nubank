@@ -1,4 +1,4 @@
-export const FONT = {
+export const FONTSEM = {
     GRAPHIK_BLACK: 'Graphik-Black-trial',
     GRAPHIK_BLACKITALIC: 'Graphik-BlackItalic-trial',
     GRAPHIK_BOLD: 'Graphik-Bold-trial',

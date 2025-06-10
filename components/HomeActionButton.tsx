@@ -1,17 +1,52 @@
-import { View, Text, Image, ImageSourcePropType} from 'react-native'
-import React from 'react'
+import { View, Text, Image, ImageSourcePropType, StyleSheet, Dimensions, Pressable, TouchableOpacity } from 'react-native';
+import React from 'react';
 
-interface ActionProps{
-  title:string
-  image:ImageSourcePropType
+interface ActionProps {
+  title: string;
+  image: ImageSourcePropType;
 }
-export default function HomeActionButton({title, image}:ActionProps) {
+
+const { width } = Dimensions.get('window');
+
+const BUTTON_SIZE = width * 0.18; // Uns 72px 
+const IMAGE_SIZE = BUTTON_SIZE * 0.4; // Uns 28px
+
+export default function HomeActionButton({ title, image }: ActionProps) {
   return (
-    <View className="flex flex-col items-center gap-2 w-[72px]">
-            <View className="bg-gray-300 rounded-full aspect-square h-[72px] flex justify-center items-center">
-                <Image className="h-2/6 aspect-square" source={image}/>
-            </View>
-        <Text className="w-fit font-semibold text-center text-sm">{title}</Text>
-    </View>
-  )
+    <TouchableOpacity style={styles.container}>
+      <View style={styles.button}>
+        <Image style={styles.image} source={image} />
+      </View>
+      <Text style={styles.text}>{title}</Text>
+    </TouchableOpacity>
+  );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: 8,
+    width: BUTTON_SIZE,
+  },
+  button: {
+    backgroundColor: '#F0F1F5',
+    borderRadius: '100%',
+    width: BUTTON_SIZE,
+    height: BUTTON_SIZE,
+    aspectRatio: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  image: {
+    height: IMAGE_SIZE,
+    width: IMAGE_SIZE,
+    aspectRatio: 1,
+  },
+  text: {
+    fontWeight: '600', 
+    textAlign: 'center',
+    fontSize: 13,
+    width: '100%',
+  },
+});
